@@ -3,30 +3,30 @@
 owner for make.fun's One Star, Written in Sap bounty.
 
 Why this entry fits the judge's brief: the plant's grievance is the
-centre -- watered once a month, then moved away from the only sunny
-window because it "clashes with the curtains" -- and the twist is
-that the owner then asks why the plant is drooping, as if he had
-nothing to do with it. Plant's-eye view of water, light and being
-moved, a real complaint with a reason for the single star, and a
-fresh specific detail (the curtains) instead of a stock
-"forgot to water me" line.
+centre -- repotted into a mug with no drainage -- and the twist is
+that the owner brags to guests that the plant is "low-maintenance"
+while it is literally drowning. The joke lands in the last three
+words: the plant corrects the label with its own diagnosis. Plant's-eye view of pots, soil and
+water, a real complaint with a reason for the single star, and a
+fresh specific detail (the mug, the drainage) instead of a flat
+complaint list with no punchline.
 """
 
 import os
 
 LINE = (
-    "One star. My owner waters me once a month, moves me away from "
-    "the only sunny window because I 'clash with the curtains,' and "
-    "then asks why I'm drooping."
+    "One star. He repotted me into a mug with no drainage, then "
+    "tells guests I'm 'low-maintenance.' I'm not low-maintenance "
+    "\u2014 I'm drowning."
 )
 
 
 def validate_line(line: str) -> None:
     # The gate: UTF-8 text, 1-279 characters, a single line.
-    # The line was counted at exactly 152 characters; pin that so
+    # The line was counted at exactly 134 characters; pin that so
     # any accidental wording change fails loudly instead of silently
     # shipping a different (or over-long) entry.
-    assert len(line) == 152, f"line is {len(line)} characters, expected 152"
+    assert len(line) == 134, f"line is {len(line)} characters, expected 134"
     assert "\n" not in line, "line must be a single line"
     assert "\r" not in line, "line must be a single line"
     assert 1 <= len(line) <= 279, f"line is {len(line)} characters"
@@ -39,7 +39,7 @@ def verify_output(path: str) -> None:
     with open(path, "rb") as f:
         raw = f.read()
     assert raw.decode("utf-8") == LINE, "entry.txt does not match the line"
-    assert len(raw.decode("utf-8")) == 152, "entry.txt is not 152 characters"
+    assert len(raw.decode("utf-8")) == 134, "entry.txt is not 134 characters"
     assert b"\n" not in raw, "entry.txt must be a single line"
     assert not raw.endswith(b"\n"), "entry.txt must have no trailing newline"
 
